@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/MudClient/v14
+/CommandClient/bin/Debug
+/CommandClient/obj/Debug
+/MudClient/bin/Debug
+/MudClient/obj/Debug
+/MudClient.Common/bin/Debug
+/MudClient.Common/obj/Debug

@@ -35,10 +35,10 @@
 			set {
 				if (value == null) return;				
 				foreach (var profileElement in value.Elements(@"Profile")) {
-					var profile = this.Add(profileElement.SafeAttributeValue(@"ProfileName"));
+					var profile = this.Add(profileElement.SafeAttributeValue<string>(@"ProfileName"));
 					profile.HotKeys.HotKeysXml = profileElement.Element(@"HotKeys");
 				}
-				this.SelectedProfile = this[value.SafeAttributeValue(@"DefaultProfile")];
+				this.SelectedProfile = this[value.SafeAttributeValue<string>(@"DefaultProfile")];
 			}
 		}
 

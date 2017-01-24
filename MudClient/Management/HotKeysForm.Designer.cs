@@ -97,6 +97,7 @@
 			this.cancel.TabIndex = 1;
 			this.cancel.Text = "&Cancel";
 			this.cancel.UseVisualStyleBackColor = true;
+			this.cancel.Click += new System.EventHandler(this.cancel_Click);
 			// 
 			// save
 			// 
@@ -107,6 +108,7 @@
 			this.save.TabIndex = 0;
 			this.save.Text = "&Okay";
 			this.save.UseVisualStyleBackColor = true;
+			this.save.Click += new System.EventHandler(this.save_Click);
 			// 
 			// addHotkey
 			// 
@@ -121,8 +123,10 @@
 			// 
 			// HotKeysForm
 			// 
+			this.AcceptButton = this.save;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.cancel;
 			this.ClientSize = new System.Drawing.Size(584, 361);
 			this.Controls.Add(this.addHotkey);
 			this.Controls.Add(this.buttonPanel);

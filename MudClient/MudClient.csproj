@@ -90,10 +90,6 @@
       <Project>{B9171891-F445-4AC6-AD21-31CB167C7A7E}</Project>
       <Name>MudClient.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MudClient.CommandParser\MudClient.CommandParser.csproj">
-      <Project>{aae8a2db-05b6-442c-b890-c4c72e8caf6f}</Project>
-      <Name>MudClient.CommandParser</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MudClient.Common\MudClient.Common.csproj">
       <Project>{55b48fc6-7756-4ab1-a891-74a8fa0afdfc}</Project>
       <Name>MudClient.Common</Name>

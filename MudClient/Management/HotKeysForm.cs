@@ -93,6 +93,24 @@
 			}
 		}
 
+		/// <summary>
+		/// Handles the Click event of the cancel control.
+		/// </summary>
+		/// <param name="sender">The source of the event.</param>
+		/// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+		private void cancel_Click(object sender, EventArgs e) {
+			this.DialogResult = DialogResult.Cancel;
+		}
+
+		/// <summary>
+		/// Handles the Click event of the save control.
+		/// </summary>
+		/// <param name="sender">The source of the event.</param>
+		/// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+		private void save_Click(object sender, EventArgs e) {
+			this.DialogResult = DialogResult.OK;
+		}
+
 		#endregion
 
 	}

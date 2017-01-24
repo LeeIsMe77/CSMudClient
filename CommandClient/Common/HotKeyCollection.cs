@@ -40,7 +40,7 @@
 				foreach (var hotKeyElement in value.Elements(@"HotKey")) {
 					this.Add(
 						this.ResolveKeys(hotKeyElement.SafeAttributeValue<string>(@"KeyCombination")),
-						hotKeyElement.SafeAttributeValue(@"CommandText")
+						hotKeyElement.SafeAttributeValue<string>(@"CommandText")
 						);
 				}
 
