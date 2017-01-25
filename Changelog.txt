@@ -1,0 +1,15 @@
+2016-01-24:
+
+Notes: Speed enhancements.  Client is becoming fast and fluid.
+
+MudClient
+	* Refactoring.
+	* Removed manual formatting from RichTextBox and stopped suspending/resuming the layout.
+
+MudClient.Extensions
+	* Added extensions class library
+
+MudClient.Core
+	* Refactoring.
+	* Increased buffer size on received messages.
+	* Corrected server-polling bug.

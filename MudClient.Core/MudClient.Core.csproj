@@ -7,8 +7,8 @@
     <ProjectGuid>{B9171891-F445-4AC6-AD21-31CB167C7A7E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CommandClient</RootNamespace>
-    <AssemblyName>CommandClient</AssemblyName>
+    <RootNamespace>MudClient.Core</RootNamespace>
+    <AssemblyName>MudClient.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -47,7 +47,7 @@
     <Compile Include="Common\HotKey.cs" />
     <Compile Include="Common\HotKeyCollection.cs" />
     <Compile Include="Common\MessageEventArgs.cs" />
-    <Compile Include="Common\MudClientManager.cs" />
+    <Compile Include="Common\ClientManager.cs" />
     <Compile Include="Common\OptionsManager.cs" />
     <Compile Include="Common\Profile.cs" />
     <Compile Include="Common\ProfileCollection.cs" />
@@ -56,9 +56,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MudClient.Common\MudClient.Common.csproj">
+    <ProjectReference Include="..\MudClient.Extensions\MudClient.Extensions.csproj">
       <Project>{55B48FC6-7756-4AB1-A891-74A8FA0AFDFC}</Project>
-      <Name>MudClient.Common</Name>
+      <Name>MudClient.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,4 @@
-﻿namespace CommandClient.Common {
+﻿namespace MudClient.Core.Common {
 
 	#region Directives
 	using System.Collections.Generic;
@@ -8,8 +8,7 @@
 	using MudClient.Core.Client;
 	#endregion
 
-	public sealed class MudClientManager {
-
+	public sealed class ClientManager {
 
 		#region Contants
 		public const string ANSI_COLOR_ESCAPE_CHARACTER = "\u001b";

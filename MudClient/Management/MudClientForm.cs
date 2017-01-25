@@ -2,22 +2,18 @@
 
 	#region Directives
 	using System;
-	using System.Collections.Generic;
-	using System.Drawing;
 	using System.Globalization;
 	using System.IO;
 	using System.Windows.Forms;
 	using System.Xml.Linq;
-	using CommandClient.Common;
 	using Core;
-	using Core.Client;
 	using Core.Common;
-	using Extensions;
 	using MudClient.Common.Extensions;
 	#endregion
 
 	public partial class MudClientForm
 		: Form {
+
 		//TODO: Create a connection builder type class which contains the command parse and options
 		//TODO: Migrate all code to a separate class.
 
@@ -54,14 +50,14 @@
 
 		#region ClientManager
 
-		private MudClientManager _clientManager;
+		private ClientManager _clientManager;
 
 		/// <summary>
 		/// Gets the client manager.
 		/// </summary>
 		/// <value>The client manager.</value>
-		public MudClientManager ClientManager {
-			get { return _clientManager ?? (_clientManager = new MudClientManager()); }
+		public ClientManager ClientManager {
+			get { return _clientManager ?? (_clientManager = new ClientManager()); }
 		}
 
 		#endregion
@@ -253,10 +249,9 @@
 		/// </summary>
 		/// <param name="message">The message.</param>
 		private void WriteToOutput(string message, bool isUserText, bool clearInput = false) {
-			//Try splitting on new lines without removing empty entries.  For each empty entry, write a new line.
 			#region AppendText
 			Action<string> AppendText = (messageToWrite) => {
-				this.richTextBox.SuspendLayout();
+				//this.richTextBox.SuspendLayout();
 				try {
 					if (clearInput) {
 						this.textBox.Clear();
@@ -278,7 +273,7 @@
 								continue;
 							}
 
-							var lineSplitColors = lineToWrite.Split(new[] { MudClientManager.ANSI_COLOR_ESCAPE_CHARACTER }, StringSplitOptions.RemoveEmptyEntries);
+							var lineSplitColors = lineToWrite.Split(new[] { ClientManager.ANSI_COLOR_ESCAPE_CHARACTER }, StringSplitOptions.RemoveEmptyEntries);
 							foreach (var lineSplit in lineSplitColors) {
 								var textToWrite = lineSplit;
 								if (!string.IsNullOrWhiteSpace(lineSplit)) {
@@ -307,8 +302,9 @@
 
 				}
 				finally {
-					this.richTextBox.ScrollToCaret();
-					this.richTextBox.ResumeLayout();
+					//this.richTextBox.SelectionStart = richTextBox.Text.Length;
+					//this.richTextBox.ScrollToCaret();
+					//this.richTextBox.ResumeLayout();
 				}
 			};
 			#endregion
@@ -350,7 +346,8 @@
 		/// Connections the client disconnected.
 		/// </summary>
 		/// <param name="sender">The sender.</param>
-		private void connectionClient_Disconnected(object sender) {
+		private void connectionClient_Disconnected(object sender) {			
+			this.WriteToOutput(@"#Disconnected.", false, false);
 			this.toolStripStatusLabel.Text = @"Disconnected.";
 		}
 
@@ -360,7 +357,13 @@
 		/// <param name="sender">The sender.</param>
 		/// <param name="e">The <see cref="MessageEventArgs"/> instance containing the event data.</param>
 		private void connectionClient_MessageReceived(object sender, MessageEventArgs e) {
-			this.WriteToOutput(e.Message, false, false);
+			try {
+				//this.richTextBox.SuspendLayout();
+				this.WriteToOutput(e.Message, false, false);
+			}
+			finally {
+				//this.richTextBox.ResumeLayout();
+			}
 		}
 
 		/// <summary>
@@ -369,7 +372,13 @@
 		/// <param name="sender">The source of the event.</param>
 		/// <param name="e">The <see cref="MessageEventArgs"/> instance containing the event data.</param>
 		private void connectionClient_MessageSent(object sender, MessageEventArgs e) {
-			this.WriteToOutput(e.Message, true, true);
+			try {
+				//this.richTextBox.SuspendLayout();
+				this.WriteToOutput(e.Message, true, true);
+			}
+			finally {
+				//this.richTextBox.ResumeLayout();
+			}
 		}
 
 		/// <summary>

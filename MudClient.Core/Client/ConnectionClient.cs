@@ -13,6 +13,9 @@
 
 	public class ConnectionClient {
 
+		//TODO: Create an event handler for OnConnectionFailed
+		//TODO: Create an event handler for OnConnectionAttempted
+
 		#region Events
 
 		#region OnMessageReceived
@@ -53,7 +56,7 @@
 
 		#region DataBuffer
 
-		private byte[] _dataBuffer = new byte[2048];
+		private byte[] _dataBuffer = new byte[1024 * 8 /*8KB*/];
 
 		#endregion
 
@@ -102,7 +105,7 @@
 					_controlClient.NoDelay = true;
 					_controlClient.Client.NoDelay = true;
 					_controlClient.Client.SetSocketOption(SocketOptionLevel.Tcp, SocketOptionName.NoDelay, true);
-					//TODO: Fix encoding like in FTP server.					
+					//TODO: Fix encoding
 				}
 				return _controlClient;
 			}
@@ -184,17 +187,12 @@
 		}
 
 		/// <summary>
-		/// Begins the read.
+		/// Begins listening for a message sent by the server.
 		/// </summary>
 		private void BeginRead() {
 			try {
-				if (this.ControlClient.IsSocketConnected()) {
+				if (this.ControlClient.Connected) {
 					this.ControlStream.BeginRead(_dataBuffer, 0, _dataBuffer.Length, new AsyncCallback(OnBeginReceive), null);
-				}
-				else {
-					this.ControlClient.Client.Disconnect(true);
-					this.OnMessageReceived?.Invoke(this, new MessageEventArgs(@"#Disconnected."));
-					this.OnClientDisconnected?.Invoke(this);
 				}
 			}
 			catch (Exception caught) {
@@ -280,8 +278,14 @@
 			try {
 				if (this.ControlClient.Connected) {
 					var message = Encoding.Default.GetString(_dataBuffer, 0, this.ControlStream.EndRead(result));
-					this.OnMessageReceived?.Invoke(this, new MessageEventArgs(message));
-					this.BeginRead();
+					if (!string.IsNullOrWhiteSpace(message) || this.ControlClient.IsSocketConnected()) {
+						this.OnMessageReceived?.Invoke(this, new MessageEventArgs(message));
+						this.BeginRead();
+					}
+					else {
+						this.ControlClient.Client.Disconnect(true);
+						this.OnClientDisconnected?.Invoke(this);
+					}
 				}
 			}
 			catch (Exception caught) {

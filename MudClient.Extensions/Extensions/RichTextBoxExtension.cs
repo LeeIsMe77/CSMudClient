@@ -7,7 +7,7 @@
 	#endregion
 
 	public static class RichTextBoxExtension {
-		
+
 
 		/// <summary>
 		/// Appends the formatted text.
@@ -15,8 +15,7 @@
 		/// <param name="richTextBox">The rich text box.</param>
 		/// <param name="message">The text.</param>
 		/// <param name="defaultColor">The color.</param>
-		/// <param name="scrollToCaret">if set to <c>true</c> [scroll to caret].</param>
-		/// <param name="addNewLine">if set to <c>true</c> [add new line].</param>
+		/// <param name="appendNewLine">if set to <c>true</c> [append new line].</param>
 		public static void AppendFormattedText(this RichTextBox richTextBox, string message, Color defaultColor, bool appendNewLine) {
 
 			if (appendNewLine) {

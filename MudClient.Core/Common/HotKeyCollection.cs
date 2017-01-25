@@ -1,4 +1,4 @@
-﻿namespace CommandClient.Common {
+﻿namespace MudClient.Core.Common {
 
 	#region Directives
 	using System;

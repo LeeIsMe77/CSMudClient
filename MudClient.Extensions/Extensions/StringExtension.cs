@@ -1,4 +1,4 @@
-﻿namespace MudClient.Extensions {
+﻿namespace MudClient.Common.Extensions {
 
 	#region Directives
 	using System;

@@ -23,17 +23,18 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MudClientForm));
 			this.menuStrip = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.hotKeysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.controlPanel = new System.Windows.Forms.Panel();
 			this.richTextBox = new System.Windows.Forms.RichTextBox();
 			this.textBox = new System.Windows.Forms.TextBox();
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.hotKeysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip.SuspendLayout();
 			this.controlPanel.SuspendLayout();
 			this.statusStrip.SuspendLayout();
@@ -77,9 +78,16 @@
 			// optionsToolStripMenuItem
 			// 
 			this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
 			this.optionsToolStripMenuItem.Text = "Options";
 			this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
+			// 
+			// hotKeysToolStripMenuItem
+			// 
+			this.hotKeysToolStripMenuItem.Name = "hotKeysToolStripMenuItem";
+			this.hotKeysToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+			this.hotKeysToolStripMenuItem.Text = "HotKeys";
+			this.hotKeysToolStripMenuItem.Click += new System.EventHandler(this.hotKeysToolStripMenuItem_Click);
 			// 
 			// controlPanel
 			// 
@@ -102,6 +110,7 @@
 			this.richTextBox.Location = new System.Drawing.Point(0, 0);
 			this.richTextBox.Name = "richTextBox";
 			this.richTextBox.ReadOnly = true;
+			this.richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
 			this.richTextBox.Size = new System.Drawing.Size(784, 495);
 			this.richTextBox.TabIndex = 2;
 			this.richTextBox.Text = "";
@@ -130,13 +139,6 @@
 			this.toolStripStatusLabel.Size = new System.Drawing.Size(82, 17);
 			this.toolStripStatusLabel.Text = "Disconnected.";
 			// 
-			// hotKeysToolStripMenuItem
-			// 
-			this.hotKeysToolStripMenuItem.Name = "hotKeysToolStripMenuItem";
-			this.hotKeysToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.hotKeysToolStripMenuItem.Text = "HotKeys";
-			this.hotKeysToolStripMenuItem.Click += new System.EventHandler(this.hotKeysToolStripMenuItem_Click);
-			// 
 			// MudClientForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,6 +146,7 @@
 			this.ClientSize = new System.Drawing.Size(784, 561);
 			this.Controls.Add(this.controlPanel);
 			this.Controls.Add(this.menuStrip);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.menuStrip;
 			this.Name = "MudClientForm";
 			this.Text = "MudClient";

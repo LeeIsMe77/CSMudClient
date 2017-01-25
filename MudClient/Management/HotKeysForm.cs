@@ -4,12 +4,12 @@
 	using System;
 	using System.Linq;
 	using System.Windows.Forms;
-	using CommandClient.Common;
-	using Extensions;
 	using MudClient.Core;
+	using MudClient.Core.Common;
 	#endregion
 
-	public partial class HotKeysForm : Form {
+	public partial class HotKeysForm 
+		: Form {
 
 		#region Properties
 
@@ -41,6 +41,9 @@
 			this.BindHotKeys();
 		}
 
+		/// <summary>
+		/// Binds the <see cref="HotKeyCollection"/> to the UI.
+		/// </summary>
 		private void BindHotKeys() {
 			try {
 				this.hotKeys.DataSource = null;

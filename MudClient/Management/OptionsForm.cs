@@ -4,7 +4,7 @@
 	using System;
 	using System.Drawing;
 	using System.Windows.Forms;
-	using CommandClient.Common;
+	using MudClient.Core.Common;
 	using Core;
 	#endregion
 
