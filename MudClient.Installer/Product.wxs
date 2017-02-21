@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+
+	<?define ProductName="CSMudClient" ?>
+	<?define ProductVersion="1.0.0.0" ?>
+	<?define ProductConfiguration="$(var.MudClient.Configuration)"?>
+	<?define ProductUpgradeCode="{D0C8327B-876F-4CF0-A86B-5AEA03C68883}" ?>
+	<?define ProductPlatform="$(var.MudClient.Platform)"?>
+	<?if $(var.ProductPlatform)="x64" ?>
+	<?define ProductComment="64-Bit" ?>
+	<?define ProgramFilesPlatformFolder="[ProgramFiles64Folder]" ?>
+	<?define Win64="yes" ?>
+	<?else?>
+	<?define ProductComment="32-Bit" ?>
+	<?define ProgramFilesPlatformFolder="[ProgramFilesFolder]" ?>
+	<?define Win64="no" ?>
+	<?endif?>
+
+	<Product Codepage="1252" Id="*" Language="1033" Manufacturer="Lee Gurley" Name="$(var.ProductName)" UpgradeCode="$(var.ProductUpgradeCode)" Version="$(var.ProductVersion)">
+
+		<Package Comments="$(var.ProductVersion)" Compressed="yes" Description="$(var.ProductName)" InstallPrivileges="elevated" InstallScope="perMachine" InstallerVersion="200" Languages="1033" Manufacturer="Lee Gurley" ShortNames="no" />
+
+		<ComponentGroup Id="ProductComponentGroup">
+			<Component Id="ProductComponent" Guid="{593d1349-871a-4fde-a4a3-800466e0df98}" DiskId="1" Directory="TARGETDIR" Win64="$(var.Win64)">
+				<File Id="MudClient.Core.dll" Name="MudClient.Core.dll" Source="$(var.MudClient.TargetDir)" />
+				<File Id="MudClient.Extensions.dll" Name="MudClient.Extensions.dll" Source="$(var.MudClient.TargetDir)" />
+				<File Id="CSMudClient.exe" Name="MudClient.exe" KeyPath="yes" Source="$(var.MudClient.TargetDir)" />
+				<File Id="CSMudClient.exe.config" Name="MudClient.exe.config" Source="$(var.MudClient.TargetDir)" />
+				<RemoveFolder Id="StartMenuFolder" Directory="StartDirectory" On="uninstall" />
+				<Shortcut Id="ApplicationShortcut" Advertise="yes" Description="C# Mud Client" Directory="StartDirectory" Icon="AssemblyIcon.ico" IconIndex="0" Name="C# Mud Client" Show="normal" />
+			</Component>
+		</ComponentGroup>
+
+		<Condition Message="This application requires the Microsoft .NET Framework 4.0. Please install the .NET Framework 4.0 and all related patches then run this installer again.">
+			<![CDATA[Installed OR NETFRAMEWORK40FULL]]>
+		</Condition>
+
+		<Condition Message="This application requires the Microsoft .NET Framework 4.0.3. Please install the .NET Framework 4.0 and all related patches then run this installer again.">
+			<![CDATA[NETFRAMEWORK403FULL]]>
+		</Condition>
+
+		<CustomAction Id="DIRCA_TARGETDIR" Property="TARGETDIR" Value="$(var.ProgramFilesPlatformFolder)[ProductName]" Execute="firstSequence" />
+		<CustomAction Id="LaunchApplicationAction" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="SamplesFolder" Name="Samples"/>
+			<Directory Id="ProgramMenuFolder" SourceName="User's Programs Menu">
+				<Directory Id="StartDirectory" Name="$(var.ProductName)" />
+			</Directory>
+		</Directory>
+
+		<Feature Id="ProductFeature" Title="$(var.ProductName) Application" Level="1" ConfigurableDirectory="TARGETDIR" Absent="allow">
+			<ComponentRef Id="ProductComponent" Primary="yes"/>
+		</Feature>
+
+		<Icon Id="AssemblyIcon.ico" SourceFile="$(var.MudClient.ProjectDir)Properties\AssemblyIcon.ico" />
+
+		<InstallExecuteSequence>
+			<Custom Action="DIRCA_TARGETDIR" Sequence="1">TARGETDIR=""</Custom>
+		</InstallExecuteSequence>
+
+		<InstallUISequence>
+			<Custom Action="DIRCA_TARGETDIR" Sequence="1">TARGETDIR=""</Custom>
+		</InstallUISequence>
+
+		<MajorUpgrade AllowDowngrades="no" AllowSameVersionUpgrades="yes" Disallow="no" DowngradeErrorMessage="A newer version of the application is already installed and downgrades are not allowed."/>
+
+		<Media Id="1" Cabinet="$(var.ProductName).cab" EmbedCab="yes"/>
+
+		<Property Id="ARPCOMMENTS" Value="$(var.ProductName) $(var.ProductComment)" />
+		<Property Id="ARPCONTACT" Value="Lee Gurley" />
+		<Property Id="ARPHELPLINK" Value="https://www.facebook.com/lee.gurley1" />
+		<Property Id="ARPHELPTELEPHONE" Value="(443) 622-5407" />
+		<Property Id="ARPPRODUCTICON" Value="AssemblyIcon.ico" />
+		<Property Id="ARPURLINFOABOUT" Value="https://www.facebook.com/lee.gurley1" />
+		<Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch application." />
+		<Property Id="WixShellExecTarget" Value="[#CSMudClient.exe]"  />
+
+		<Property Id="NETFRAMEWORK403FULL">
+			<RegistrySearch Id="NETFRAMEWORK403FULL_RegistrySearch" Type="raw" Root="HKLM" Win64="no" Key="SOFTWARE\Microsoft\Updates\Microsoft .NET Framework 4 Extended\KB2600211" Name="ThisVersionInstalled" />
+		</Property>
+
+		<PropertyRef Id="NETFRAMEWORK40FULL"/>
+
+		<SetProperty Id="ARPINSTALLLOCATION" Value="[TARGETDIR]" After="CostFinalize" />
+
+		<UI>
+			<UIRef Id="WixUI_FeatureTree"/>
+			<Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplicationAction">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+		</UI>
+
+		<Upgrade Id="$(var.ProductUpgradeCode)">
+			<UpgradeVersion Maximum="$(var.ProductVersion)" OnlyDetect="no" Property="PREVIOUSVERSIONSINSTALLED" IncludeMaximum="no" />
+		</Upgrade>
+<!--
+		<WixVariable Id="WixUIBannerBmp" Value="Banner.bmp" />
+		<WixVariable Id="WixUIDialogBmp" Value="Dialog.bmp" />
+-->
+		<WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+	</Product>
+
+</Wix>

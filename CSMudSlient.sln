@@ -14,24 +14,46 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Changelog.txt = Changelog.txt
 	EndProjectSection
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "MudClient.Installer", "MudClient.Installer\MudClient.Installer.wixproj", "{30D07834-C295-495B-9DB0-59B07314B51E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{593D1349-871A-4FDE-A4A3-800466E0DF98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{593D1349-871A-4FDE-A4A3-800466E0DF98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{593D1349-871A-4FDE-A4A3-800466E0DF98}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{593D1349-871A-4FDE-A4A3-800466E0DF98}.Debug|x86.Build.0 = Debug|Any CPU
 		{593D1349-871A-4FDE-A4A3-800466E0DF98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{593D1349-871A-4FDE-A4A3-800466E0DF98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{593D1349-871A-4FDE-A4A3-800466E0DF98}.Release|x86.ActiveCfg = Release|Any CPU
+		{593D1349-871A-4FDE-A4A3-800466E0DF98}.Release|x86.Build.0 = Release|Any CPU
 		{B9171891-F445-4AC6-AD21-31CB167C7A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B9171891-F445-4AC6-AD21-31CB167C7A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9171891-F445-4AC6-AD21-31CB167C7A7E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B9171891-F445-4AC6-AD21-31CB167C7A7E}.Debug|x86.Build.0 = Debug|Any CPU
 		{B9171891-F445-4AC6-AD21-31CB167C7A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9171891-F445-4AC6-AD21-31CB167C7A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9171891-F445-4AC6-AD21-31CB167C7A7E}.Release|x86.ActiveCfg = Release|Any CPU
+		{B9171891-F445-4AC6-AD21-31CB167C7A7E}.Release|x86.Build.0 = Release|Any CPU
 		{55B48FC6-7756-4AB1-A891-74A8FA0AFDFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{55B48FC6-7756-4AB1-A891-74A8FA0AFDFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55B48FC6-7756-4AB1-A891-74A8FA0AFDFC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{55B48FC6-7756-4AB1-A891-74A8FA0AFDFC}.Debug|x86.Build.0 = Debug|Any CPU
 		{55B48FC6-7756-4AB1-A891-74A8FA0AFDFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55B48FC6-7756-4AB1-A891-74A8FA0AFDFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55B48FC6-7756-4AB1-A891-74A8FA0AFDFC}.Release|x86.ActiveCfg = Release|Any CPU
+		{55B48FC6-7756-4AB1-A891-74A8FA0AFDFC}.Release|x86.Build.0 = Release|Any CPU
+		{30D07834-C295-495B-9DB0-59B07314B51E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{30D07834-C295-495B-9DB0-59B07314B51E}.Debug|x86.ActiveCfg = Debug|x86
+		{30D07834-C295-495B-9DB0-59B07314B51E}.Debug|x86.Build.0 = Debug|x86
+		{30D07834-C295-495B-9DB0-59B07314B51E}.Release|Any CPU.ActiveCfg = Release|x86
+		{30D07834-C295-495B-9DB0-59B07314B51E}.Release|x86.ActiveCfg = Release|x86
+		{30D07834-C295-495B-9DB0-59B07314B51E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

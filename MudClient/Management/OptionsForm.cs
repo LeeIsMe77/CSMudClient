@@ -2,7 +2,6 @@
 
 	#region Directives
 	using System;
-	using System.Drawing;
 	using System.Windows.Forms;
 	using MudClient.Core.Common;
 	using Core;

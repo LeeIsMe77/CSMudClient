@@ -13,3 +13,7 @@
 /MudClient.Extensions/bin/Debug
 /MudClient.Core/obj/Debug
 /MudClient.Core/bin/Debug
+/MudClient.Installer/obj/Debug
+/MudClient.Installer/bin/Debug/CSMudClient.wixpdb
+/MudClient.Installer/bin/Debug/CSMudClient.msi
+/MudClient.Installer/bin/Debug

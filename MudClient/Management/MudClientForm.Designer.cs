@@ -149,7 +149,7 @@
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.menuStrip;
 			this.Name = "MudClientForm";
-			this.Text = "MudClient";
+			this.Text = "C# Mud Client";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MudClientForm_FormClosing);
 			this.menuStrip.ResumeLayout(false);
 			this.menuStrip.PerformLayout();

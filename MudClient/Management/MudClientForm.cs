@@ -266,14 +266,16 @@
 
 						var linesToWrite = messageToWrite.Split(new[] { "\r\n", "\n\r", "\n" }, StringSplitOptions.None);
 						foreach (var lineToWrite in linesToWrite) {
+
+							var strippedLine = lineToWrite.Replace("\r", string.Empty);
 							var clientForeColor = this.ClientManager.OptionManager.ForegroundColor;
 
-							if (string.IsNullOrWhiteSpace(lineToWrite)) {
+							if (string.IsNullOrWhiteSpace(strippedLine)) {
 								this.richTextBox.AppendFormattedText(string.Empty, clientForeColor, true);
 								continue;
 							}
 
-							var lineSplitColors = lineToWrite.Split(new[] { ClientManager.ANSI_COLOR_ESCAPE_CHARACTER }, StringSplitOptions.RemoveEmptyEntries);
+							var lineSplitColors = strippedLine.Split(new[] { ClientManager.ANSI_COLOR_ESCAPE_CHARACTER }, StringSplitOptions.RemoveEmptyEntries);
 							foreach (var lineSplit in lineSplitColors) {
 								var textToWrite = lineSplit;
 								if (!string.IsNullOrWhiteSpace(lineSplit)) {
