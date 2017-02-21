@@ -1,4 +1,4 @@
-2016-01-24:
+2017-01-24:
 
 Notes: Speed enhancements.  Client is becoming fast and fluid.
 
@@ -13,3 +13,9 @@ MudClient.Core
 	* Refactoring.
 	* Increased buffer size on received messages.
 	* Corrected server-polling bug.
+
+
+2017-02-20
+
+MudClient.Installer
+	* Added installer to the project.
